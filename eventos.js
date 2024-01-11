@@ -5,13 +5,8 @@ const INPUT_BAIRRO = document.getElementById('bairro');
 const INPUT_CIDADE = document.getElementById('cidade');
 const INPUT_UF = document.getElementById('uf');
 
-INPUT_CEP.addEventListener('blur', () => {
+function obtemEndereco() {
     let cep = INPUT_CEP.value;
-
-    if (cep.length !== 8) {
-        return;
-    }
-
     fetch(`https://viacep.com.br/ws/${cep}/json/`)
         .then(resposta => resposta.json())
         .then(json => {
@@ -22,4 +17,4 @@ INPUT_CEP.addEventListener('blur', () => {
 
             INPUT_NUMERO.focus();
         });
-})
+}
